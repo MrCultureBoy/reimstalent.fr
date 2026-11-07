@@ -1,0 +1,13 @@
+{
+  "name": "Reims Talent",
+  "short_name": "Reims Talent",
+  "description": "Le média qui révèle les talents de Reims.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1626",
+  "theme_color": "#0B1626",
+  "icons": [
+    { "src": "/assets/img/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/img/icone-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /donnees/
+Sitemap: https://reimstalent.fr/sitemap.xml
