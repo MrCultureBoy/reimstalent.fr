@@ -127,6 +127,69 @@
     if (d.open) questions.forEach((autre) => autre !== d && (autre.open = false));
   }));
 
+  // Jour / nuit : le choix du visiteur, sinon celui du système
+  const boutonTheme = document.querySelector("[data-theme-bouton]");
+  const systemeSombre = window.matchMedia("(prefers-color-scheme: dark)");
+  const themeActuel = () => racine.dataset.theme || (systemeSombre.matches ? "dark" : "light");
+  const majCouleurBarre = () => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = themeActuel() === "dark" ? "#0C1727" : "#F5F1E8";
+    if (boutonTheme) boutonTheme.setAttribute("aria-label", themeActuel() === "dark" ? "Passer en mode jour" : "Passer en mode nuit");
+  };
+  majCouleurBarre();
+  systemeSombre.addEventListener?.("change", majCouleurBarre);
+  if (boutonTheme) boutonTheme.addEventListener("click", () => {
+    const suivant = themeActuel() === "dark" ? "light" : "dark";
+    racine.dataset.theme = suivant;
+    try { localStorage.setItem("rt-theme", suivant); } catch (e) {}
+    majCouleurBarre();
+  });
+
+  // Proposer un talent : le formulaire change selon « mon talent » ou « le talent de quelqu'un »
+  document.querySelectorAll("form[data-mode]").forEach((form) => {
+    const section = form.closest("section") || form;
+    const choix = form.querySelector("[data-choix]");
+    const curseur = choix && choix.querySelector(".choix__curseur");
+    const placer = () => {
+      const coche = choix && choix.querySelector("input:checked");
+      if (!coche || !curseur) return;
+      const etiquette = coche.nextElementSibling.getBoundingClientRect();
+      const cadre = choix.getBoundingClientRect();
+      const bord = choix.clientLeft || 0;
+      curseur.style.width = etiquette.width + "px";
+      curseur.style.transform = "translateX(" + (etiquette.left - cadre.left - bord - 4) + "px)";
+    };
+    const appliquer = (mode, anime) => {
+      form.dataset.mode = mode;
+      const cle = mode === "autre" ? "autre" : "moi";
+      const changer = (el, faire) => {
+        if (!anime || calme) return faire();
+        el.classList.add("est-change");
+        setTimeout(() => { faire(); el.classList.remove("est-change"); }, 200);
+      };
+      section.querySelectorAll("[data-moi]").forEach((el) => {
+        const texte = el.dataset[cle];
+        if (texte == null) return;
+        if (el.hasAttribute("data-valeur")) { el.value = texte; return; }
+        if (el.textContent !== texte) changer(el, () => (el.textContent = texte));
+      });
+      section.querySelectorAll("[data-moi-placeholder]").forEach((el) => {
+        const texte = el.getAttribute("data-" + cle + "-placeholder");
+        if (texte && el.placeholder !== texte) changer(el, () => (el.placeholder = texte));
+      });
+      form.querySelectorAll("[data-requis-autre]").forEach((el) => {
+        el.required = mode === "autre";
+        el.tabIndex = mode === "autre" ? 0 : -1;
+        if (mode !== "autre") el.removeAttribute("aria-invalid");
+      });
+      placer();
+    };
+    form.querySelectorAll('input[name="qui"]').forEach((r) => r.addEventListener("change", () => appliquer(r.value === "moi" ? "moi" : "autre", true)));
+    appliquer("moi", false);
+    window.addEventListener("resize", placer);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(placer);
+  });
+
   // Formulaires : envoi sans recharger la page
   document.querySelectorAll("[data-formulaire]").forEach((form) => {
     const etat = form.querySelector(".formulaire__etat");
