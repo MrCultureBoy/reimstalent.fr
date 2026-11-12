@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Reims Talent · Le média qui révèle les talents de Reims</title>
   <meta name="description" content="Musiciens, comédiens, danseurs, sportifs, créateurs : Reims Talent raconte les talents de Reims en portraits vidéo courts et sincères, en français et en anglais.">
-  <meta name="theme-color" content="#0B1626">
+  <meta name="theme-color" content="#F5F1E8">
   <link rel="canonical" href="https://reimstalent.fr/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/img/favicon-48.png">
@@ -25,7 +25,7 @@
 
   <link rel="preload" href="/assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/site.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -40,6 +40,7 @@
     "sameAs": [
       "https://www.instagram.com/reims_talent/",
       "https://www.tiktok.com/@reims.talent",
+      "https://www.youtube.com/@ReimsTalent",
       "https://www.linkedin.com/company/reims-talent/"
     ]
   }
@@ -48,19 +49,19 @@
 <body>
   <a class="evitement" href="#contenu">Aller au contenu</a>
 
-  <!-- En-tête -->
   <header class="entete" data-entete>
     <div class="entete__barre">
       <a class="marque" href="#haut" aria-label="Reims Talent, retour en haut">
-        <img src="/assets/img/monogramme.png" alt="" width="40" height="41">
+        <img src="/assets/img/monogramme-fonce.png" alt="" width="30" height="30">
         <span>Reims Talent</span>
       </a>
       <nav class="nav" id="nav" aria-label="Navigation principale">
-        <a href="#talents">Les talents</a>
-        <a href="#projet">Le projet</a>
-        <a href="#evenements">Événements</a>
-        <a href="#partenaires">Partenaires</a>
-        <a class="bouton bouton--or bouton--petit" href="#proposer">Proposer un talent</a>
+        <a href="#portraits" data-lien>Portraits</a>
+        <a href="#projet" data-lien>Le projet</a>
+        <a href="#participer" data-lien>Participer</a>
+        <a href="#questions" data-lien>Questions</a>
+        <a href="#partenaires" data-lien>Partenaires</a>
+        <a class="bouton bouton--plein nav__appel" href="#participer">Proposer un talent</a>
       </nav>
       <button class="burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="Ouvrir le menu" data-burger>
         <span></span><span></span>
@@ -72,178 +73,191 @@
 
     <!-- Accueil -->
     <section class="accueil" id="haut" aria-labelledby="titre-accueil">
-      <div class="accueil__video" aria-hidden="true">
-        <video data-accueil muted playsinline loop preload="metadata"
-               poster="/assets/img/accueil.jpg"
-               data-src-large="/assets/video/accueil.mp4"
-               data-src-mobile="/assets/video/accueil-mobile.mp4"
-               data-poster-mobile="/assets/img/accueil-mobile.jpg"></video>
-      </div>
-      <div class="accueil__voile" aria-hidden="true"></div>
-      <div class="cadre accueil__contenu">
-        <p class="surtitre apparition">Reims Talent · Le média</p>
-        <h1 id="titre-accueil" class="accueil__titre apparition">Révéler les talents <em>de&nbsp;Reims</em></h1>
-        <p class="accueil__chapo apparition">Musiciens, comédiens, danseurs, sportifs, créateurs&nbsp;: nous partons à leur rencontre et racontons leur histoire en vidéo. Des portraits courts et sincères, en français et en anglais.</p>
-        <div class="accueil__actions apparition">
-          <a class="bouton bouton--or" href="#talents">Voir les portraits</a>
-          <a class="bouton bouton--contour" href="#proposer">Proposer un talent</a>
+      <div class="cadre">
+        <div class="accueil__tete">
+          <p class="etiquette apparition">Reims Talent · le média</p>
+          <h1 id="titre-accueil" class="accueil__titre apparition">Révéler les talents <em>de&nbsp;Reims</em></h1>
+          <p class="accueil__chapo apparition">Musiciens, comédiens, danseurs, sportifs, créateurs&nbsp;: nous partons à leur rencontre et racontons leur histoire en vidéo. Des portraits courts et sincères, en français et en anglais.</p>
+          <div class="actions apparition">
+            <a class="bouton bouton--plein" href="#portraits">Voir les portraits</a>
+            <a class="lien" href="#participer">Proposer un talent <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-      </div>
-      <div class="cadre accueil__pied">
-        <ul class="reseaux" aria-label="Nos réseaux">
-          <li><a href="https://www.instagram.com/reims_talent/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.tiktok.com/@reims.talent" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://www.linkedin.com/company/reims-talent/" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
-        <a class="defiler" href="#talents" aria-label="Descendre vers les portraits"><span></span></a>
+
+        <figure class="accueil__film apparition">
+          <video data-accueil muted playsinline loop preload="metadata"
+                 poster="/assets/img/accueil.jpg"
+                 data-src-large="/assets/video/accueil.mp4"
+                 data-src-mobile="/assets/video/accueil-mobile.mp4"
+                 data-poster-mobile="/assets/img/accueil-mobile.jpg"
+                 aria-label="Extraits des portraits Reims Talent"></video>
+          <figcaption>
+            <button class="son" type="button" aria-pressed="false" data-son>
+              <span class="son__barres" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span data-son-libelle>Écouter la guitare de Philippe</span>
+            </button>
+            <audio data-son-piste preload="none" loop src="/assets/audio/philippe-guitare.m4a"></audio>
+            <ul class="faits" aria-label="En bref">
+              <li>6 talents</li>
+              <li>Sous-titrés FR · EN</li>
+              <li>Tournés à Reims</li>
+            </ul>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- Bandeau des disciplines -->
-    <div class="bandeau" aria-hidden="true">
-      <div class="bandeau__piste">
-        <span>Théâtre</span><span>Musique</span><span>Danse</span><span>Poésie</span><span>Sport</span><span>Chant</span><span>Photographie</span><span>Entrepreneuriat</span><span>Engagement</span><span>Parcours atypiques</span>
-        <span>Théâtre</span><span>Musique</span><span>Danse</span><span>Poésie</span><span>Sport</span><span>Chant</span><span>Photographie</span><span>Entrepreneuriat</span><span>Engagement</span><span>Parcours atypiques</span>
-      </div>
-    </div>
-
-    <!-- Les talents -->
-    <section class="section section--nuit" id="talents" aria-labelledby="titre-talents">
+    <!-- Portraits -->
+    <section class="section" id="portraits" aria-labelledby="titre-portraits">
       <div class="cadre">
-        <header class="section__tete apparition">
-          <p class="surtitre">Les portraits</p>
-          <h2 id="titre-talents" class="titre">Ils ont ouvert <em>le bal</em></h2>
-          <p class="section__chapo">Chaque film met en lumière une personne, sa passion et son parcours. Cliquez sur une carte pour voir le film en entier.</p>
+        <header class="tete apparition">
+          <p class="etiquette"><span>01</span> Les portraits</p>
+          <h2 id="titre-portraits" class="titre">Six talents, <em>six histoires</em></h2>
+          <p class="chapo">Chaque film met en lumière une personne, sa passion et son parcours. Survolez une carte pour voir un extrait, cliquez pour le film en entier.</p>
         </header>
 
-        <div class="talents">
+        <div class="portraits" data-portraits>
           <article class="carte apparition">
-            <a class="carte__lien" href="https://www.linkedin.com/feed/update/urn:li:activity:7521694579008389120/" target="_blank" rel="noopener" aria-label="Voir le portrait de Daniel">
-              <div class="carte__media">
-                <video muted playsinline loop preload="none" poster="/assets/img/daniel.jpg" data-carte>
-                  <source src="/assets/video/daniel.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="carte__texte">
-                <p class="carte__discipline">Marche · Santé mentale</p>
-                <h3 class="carte__nom">Daniel</h3>
-                <p class="carte__accroche">« Je marche des Pays-Bas jusqu'en Espagne. »</p>
-                <p class="carte__resume">2 560 km à pied pour que chacun ose parler de ce qu'il traverse. De passage à Reims, il raconte son histoire.</p>
-                <span class="carte__voir">Voir le film <span aria-hidden="true">↗</span></span>
-              </div>
+            <a class="carte__media" href="https://www.youtube.com/shorts/BYfRUF6-oyg" target="_blank" rel="noopener" aria-label="Voir les films de Dorian">
+              <video muted playsinline loop preload="none" poster="/assets/img/dorian.jpg" data-carte>
+                <source src="/assets/video/dorian.mp4" type="video/mp4">
+              </video>
+              <span class="pastille">Nouveau</span>
             </a>
+            <div class="carte__texte">
+              <p class="carte__discipline">Modèle Élégance · Série en 5 épisodes</p>
+              <h3 class="carte__nom">Dorian</h3>
+              <p class="carte__citation">« Modèle Élégance, ça se vit, et ça ne se raconte pas. »</p>
+              <p class="carte__resume">Professeur d'économie et de marketing, il préside Modèle Élégance Champagne-Ardenne. De son premier concours en Haute-Marne aux délégués de toute la France.</p>
+              <a class="lien" href="https://www.youtube.com/shorts/BYfRUF6-oyg" target="_blank" rel="noopener">Voir les films <span aria-hidden="true">↗</span></a>
+            </div>
           </article>
 
           <article class="carte apparition">
-            <a class="carte__lien" href="https://www.linkedin.com/feed/update/urn:li:activity:7521697595224854529/" target="_blank" rel="noopener" aria-label="Voir le portrait de William">
-              <div class="carte__media">
-                <video muted playsinline loop preload="none" poster="/assets/img/william.jpg" data-carte>
-                  <source src="/assets/video/william.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="carte__texte">
-                <p class="carte__discipline">Théâtre</p>
-                <h3 class="carte__nom">William</h3>
-                <p class="carte__accroche">« J'ai un rêve&nbsp;: être artiste. »</p>
-                <p class="carte__resume">Six ans de théâtre, l'art dramatique au conservatoire, et un objectif&nbsp;: le Conservatoire national supérieur de Paris.</p>
-                <span class="carte__voir">Voir le film <span aria-hidden="true">↗</span></span>
-              </div>
+            <a class="carte__media" href="https://www.youtube.com/shorts/jqiysAtIw2w" target="_blank" rel="noopener" aria-label="Voir les films de Philippe">
+              <video muted playsinline loop preload="none" poster="/assets/img/philippe.jpg" data-carte>
+                <source src="/assets/video/philippe.mp4" type="video/mp4">
+              </video>
+              <span class="pastille">Nouveau</span>
             </a>
+            <div class="carte__texte">
+              <p class="carte__discipline">Guitare · Composition · Série en 15 épisodes</p>
+              <h3 class="carte__nom">Philippe</h3>
+              <p class="carte__citation">« La musique, c'est quand même quelque part un partage. »</p>
+              <p class="carte__resume">Guitariste à Reims, son talent, c'est de composer. La musique comme partage, et un peu de reconnaissance pour ses morceaux.</p>
+              <a class="lien" href="https://www.youtube.com/shorts/jqiysAtIw2w" target="_blank" rel="noopener">Voir les films <span aria-hidden="true">↗</span></a>
+            </div>
           </article>
 
           <article class="carte apparition">
-            <a class="carte__lien" href="https://www.linkedin.com/feed/update/urn:li:activity:7522004211216084992/" target="_blank" rel="noopener" aria-label="Voir le portrait de Philippe">
-              <div class="carte__media">
-                <video muted playsinline loop preload="none" poster="/assets/img/philippe.jpg" data-carte>
-                  <source src="/assets/video/philippe.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="carte__texte">
-                <p class="carte__discipline">Guitare · Voix</p>
-                <h3 class="carte__nom">Philippe</h3>
-                <p class="carte__accroche">« Quand nos âmes se rejoignent »</p>
-                <p class="carte__resume">Philippe prend sa guitare et chante, dans un jardin de Reims. Une voix, six cordes, et rien d'autre.</p>
-                <span class="carte__voir">Voir le film <span aria-hidden="true">↗</span></span>
-              </div>
+            <a class="carte__media" href="https://www.instagram.com/reel/DerkuVaj47A/" target="_blank" rel="noopener" aria-label="Voir le film de Will">
+              <video muted playsinline loop preload="none" poster="/assets/img/will.jpg" data-carte>
+                <source src="/assets/video/will.mp4" type="video/mp4">
+              </video>
             </a>
+            <div class="carte__texte">
+              <p class="carte__discipline">Guitare · Voix</p>
+              <h3 class="carte__nom">Will</h3>
+              <p class="carte__citation">« Devant la cathédrale. »</p>
+              <p class="carte__resume">Venu du Honduras, Will reprend «&nbsp;La vida en un beso&nbsp;» face au parvis de la cathédrale, puis lève sa guitare au ciel.</p>
+              <a class="lien" href="https://www.instagram.com/reel/DerkuVaj47A/" target="_blank" rel="noopener">Voir le film <span aria-hidden="true">↗</span></a>
+            </div>
           </article>
 
           <article class="carte apparition">
-            <a class="carte__lien" href="https://www.instagram.com/reims_talent/" target="_blank" rel="noopener" aria-label="Voir le portrait de Dan sur Instagram">
-              <div class="carte__media">
-                <video muted playsinline loop preload="none" poster="/assets/img/dan.jpg" data-carte>
-                  <source src="/assets/video/dan.mp4" type="video/mp4">
-                </video>
-                <span class="carte__badge">Nouveau</span>
-              </div>
-              <div class="carte__texte">
-                <p class="carte__discipline">Guitare</p>
-                <h3 class="carte__nom">Dan</h3>
-                <p class="carte__accroche">« Au parc. »</p>
-                <p class="carte__resume">Dan, sa guitare, un parc de Reims en fin d'été&nbsp;: une session acoustique, en une prise.</p>
-                <span class="carte__voir">Voir le film <span aria-hidden="true">↗</span></span>
-              </div>
+            <a class="carte__media" href="https://www.instagram.com/reel/DfP4QHQmBKb/" target="_blank" rel="noopener" aria-label="Voir le film de Dan">
+              <video muted playsinline loop preload="none" poster="/assets/img/dan.jpg" data-carte>
+                <source src="/assets/video/dan.mp4" type="video/mp4">
+              </video>
             </a>
+            <div class="carte__texte">
+              <p class="carte__discipline">Guitare</p>
+              <h3 class="carte__nom">Dan</h3>
+              <p class="carte__citation">« Au parc. »</p>
+              <p class="carte__resume">Dan, sa guitare, un parc de Reims en fin d'été&nbsp;: une session acoustique, en une prise.</p>
+              <a class="lien" href="https://www.instagram.com/reel/DfP4QHQmBKb/" target="_blank" rel="noopener">Voir le film <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="carte apparition">
+            <a class="carte__media" href="https://www.linkedin.com/feed/update/urn:li:activity:7521697595224854529/" target="_blank" rel="noopener" aria-label="Voir le film de William">
+              <video muted playsinline loop preload="none" poster="/assets/img/william.jpg" data-carte>
+                <source src="/assets/video/william.mp4" type="video/mp4">
+              </video>
+            </a>
+            <div class="carte__texte">
+              <p class="carte__discipline">Théâtre</p>
+              <h3 class="carte__nom">William</h3>
+              <p class="carte__citation">« J'ai un rêve&nbsp;: être artiste. »</p>
+              <p class="carte__resume">Six ans de théâtre, l'art dramatique au conservatoire, et un objectif&nbsp;: le Conservatoire national supérieur de Paris.</p>
+              <a class="lien" href="https://www.linkedin.com/feed/update/urn:li:activity:7521697595224854529/" target="_blank" rel="noopener">Voir le film <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="carte apparition">
+            <a class="carte__media" href="https://www.linkedin.com/feed/update/urn:li:activity:7521694579008389120/" target="_blank" rel="noopener" aria-label="Voir le film de Daniel">
+              <video muted playsinline loop preload="none" poster="/assets/img/daniel.jpg" data-carte>
+                <source src="/assets/video/daniel.mp4" type="video/mp4">
+              </video>
+            </a>
+            <div class="carte__texte">
+              <p class="carte__discipline">Marche · Santé mentale</p>
+              <h3 class="carte__nom">Daniel</h3>
+              <p class="carte__citation">« Je marche des Pays-Bas jusqu'en Espagne. »</p>
+              <p class="carte__resume">2&nbsp;560&nbsp;km à pied pour que chacun ose parler de ce qu'il traverse. De passage à Reims, il raconte son histoire.</p>
+              <a class="lien" href="https://www.linkedin.com/feed/update/urn:li:activity:7521694579008389120/" target="_blank" rel="noopener">Voir le film <span aria-hidden="true">↗</span></a>
+            </div>
           </article>
         </div>
 
         <div class="suite apparition">
-          <p>De nouveaux portraits arrivent. Ne les manquez pas&nbsp;:</p>
-          <ul class="reseaux reseaux--boutons">
-            <li><a href="https://www.instagram.com/reims_talent/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></li>
-            <li><a href="https://www.tiktok.com/@reims.talent" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a></li>
-            <li><a href="https://www.linkedin.com/company/reims-talent/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+          <p>De nouveaux films sortent régulièrement. Suivez-les là où vous êtes&nbsp;:</p>
+          <ul class="reseaux">
+            <li><a href="https://www.instagram.com/reims_talent/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@reims.talent" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://www.youtube.com/@ReimsTalent" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://www.linkedin.com/company/reims-talent/" target="_blank" rel="noopener">LinkedIn</a></li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- Le projet -->
-    <section class="section section--creme" id="projet" aria-labelledby="titre-projet">
+    <section class="section section--filet" id="projet" aria-labelledby="titre-projet">
       <div class="cadre">
-        <div class="manifeste apparition">
-          <p class="surtitre surtitre--fonce">Le projet</p>
-          <h2 id="titre-projet" class="manifeste__citation">Chacun a un talent. <em>Il mérite d'être vu.</em></h2>
-          <p class="manifeste__texte">On ne parle pas d'actualité, on parle de personnes&nbsp;: leur parcours, leurs coulisses, leurs doutes, leurs déclics. Toujours ancrés dans la ville. Ce qui compte, ce n'est pas l'âge ni le statut, mais le parcours, l'énergie et l'impact local.</p>
+        <div class="projet">
+          <div class="apparition">
+            <p class="etiquette"><span>02</span> Le projet</p>
+            <h2 id="titre-projet" class="titre">Chacun a un talent. <em>Il mérite d'être vu.</em></h2>
+          </div>
+          <p class="projet__texte apparition">On ne parle pas d'actualité, on parle de personnes&nbsp;: leur parcours, leurs coulisses, leurs doutes, leurs déclics. Toujours ancrés dans la ville. Ce qui compte, ce n'est pas l'âge ni le statut, mais le parcours, l'énergie et l'impact local.</p>
         </div>
 
-        <div class="piliers">
-          <div class="pilier apparition">
-            <span class="pilier__num">01</span>
-            <h3>Humain</h3>
-            <p>Des histoires vraies, avec leurs forces et leurs doutes. Pas de mise en scène&nbsp;: la personne, sa voix, son talent.</p>
-          </div>
-          <div class="pilier apparition">
-            <span class="pilier__num">02</span>
-            <h3>Local</h3>
-            <p>Reims n'est pas un décor, c'est notre point de départ. Ses parcs, ses rues, sa cathédrale&nbsp;: chaque film est tourné ici.</p>
-          </div>
-          <div class="pilier apparition">
-            <span class="pilier__num">03</span>
-            <h3>Bilingue</h3>
-            <p>Chaque portrait est sous-titré en français et en anglais, pour que les talents de Reims se voient plus loin que Reims.</p>
-          </div>
-        </div>
+        <ol class="piliers">
+          <li class="apparition"><span class="piliers__num">01</span><h3>Humain</h3><p>Des histoires vraies, avec leurs forces et leurs doutes. Pas de mise en scène&nbsp;: la personne, sa voix, son talent.</p></li>
+          <li class="apparition"><span class="piliers__num">02</span><h3>Local</h3><p>Reims n'est pas un décor, c'est notre point de départ. Ses parcs, ses rues, sa cathédrale&nbsp;: chaque film est tourné ici.</p></li>
+          <li class="apparition"><span class="piliers__num">03</span><h3>Bilingue</h3><p>Chaque portrait est sous-titré en français et en anglais, pour que les talents de Reims se voient plus loin que Reims.</p></li>
+        </ol>
 
         <div class="rubriques apparition">
           <h3 class="rubriques__titre">Cinq rubriques</h3>
-          <ol>
+          <ul>
             <li><strong>Créer à Reims</strong><span>Artistes, photographes, vidéastes, musiciens, designers</span></li>
             <li><strong>Entreprendre à Reims</strong><span>Entrepreneurs, artisans, commerçants, indépendants</span></li>
             <li><strong>Se dépasser à Reims</strong><span>Sportifs, coachs, danseurs, performeurs</span></li>
             <li><strong>Agir pour Reims</strong><span>Associations, étudiants, collectifs</span></li>
             <li><strong>Parcours atypiques</strong><span>Reconversions, deuxièmes chances</span></li>
-          </ol>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Proposer un talent -->
-    <section class="section section--marine" id="proposer" aria-labelledby="titre-proposer">
+    <!-- Participer -->
+    <section class="section section--marine" id="participer" aria-labelledby="titre-participer">
       <div class="cadre deux-colonnes">
         <div class="apparition">
-          <p class="surtitre">Proposer un talent</p>
-          <h2 id="titre-proposer" class="titre">Tu as un talent&nbsp;? <em>Ou tu connais quelqu'un qui en a un&nbsp;?</em></h2>
+          <p class="etiquette etiquette--clair"><span>03</span> Participer</p>
+          <h2 id="titre-participer" class="titre">Tu as un talent&nbsp;? <em>Ou tu connais quelqu'un qui en a un&nbsp;?</em></h2>
           <ol class="etapes">
             <li><span>1</span><div><strong>Tu nous écris</strong><p>Quelques lignes suffisent&nbsp;: qui, quel talent, comment te joindre.</p></div></li>
             <li><span>2</span><div><strong>On se rencontre</strong><p>On fait connaissance, puis on filme à Reims, simplement.</p></div></li>
@@ -260,123 +274,208 @@
           <div class="piege" aria-hidden="true"><label>Ne pas remplir <input type="text" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
 
           <fieldset class="choix">
-            <legend>Je propose</legend>
-            <label><input type="radio" name="qui" value="moi" checked> mon talent</label>
-            <label><input type="radio" name="qui" value="quelqu'un"> le talent de quelqu'un</label>
+            <legend class="visuellement-cache">Je propose</legend>
+            <label><input type="radio" name="qui" value="moi" checked><span>Mon talent</span></label>
+            <label><input type="radio" name="qui" value="quelqu'un"><span>Le talent de quelqu'un</span></label>
           </fieldset>
-          <div class="champ">
-            <label for="t-prenom">Ton prénom</label>
-            <input id="t-prenom" name="prenom" type="text" autocomplete="given-name" required maxlength="60">
-          </div>
-          <div class="champ">
-            <label for="t-email">Ton e-mail</label>
-            <input id="t-email" name="email" type="email" autocomplete="email" required maxlength="120">
+          <div class="grille-champs">
+            <div class="champ">
+              <label for="t-prenom">Ton prénom</label>
+              <input id="t-prenom" name="prenom" type="text" autocomplete="given-name" required maxlength="60">
+            </div>
+            <div class="champ">
+              <label for="t-email">Ton e-mail</label>
+              <input id="t-email" name="email" type="email" autocomplete="email" required maxlength="120">
+            </div>
           </div>
           <div class="champ">
             <label for="t-talent">Le talent</label>
             <input id="t-talent" name="talent" type="text" placeholder="Guitare, danse, boxe, poésie…" required maxlength="120">
           </div>
-          <div class="champ">
-            <label for="t-lien">Un lien pour le découvrir <span class="facultatif">(facultatif)</span></label>
-            <input id="t-lien" name="lien" type="url" placeholder="Instagram, TikTok, YouTube…" maxlength="300">
-          </div>
+          <fieldset class="reseaux-champs">
+            <legend>Tes réseaux <span class="facultatif">facultatif, remplis ceux que tu as</span></legend>
+            <div class="grille-champs grille-champs--reseaux">
+              <div class="champ champ--reseau">
+                <label for="t-instagram">Instagram</label>
+                <input id="t-instagram" name="instagram" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="@pseudo" maxlength="200">
+              </div>
+              <div class="champ champ--reseau">
+                <label for="t-tiktok">TikTok</label>
+                <input id="t-tiktok" name="tiktok" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="@pseudo" maxlength="200">
+              </div>
+              <div class="champ champ--reseau">
+                <label for="t-youtube">YouTube</label>
+                <input id="t-youtube" name="youtube" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="@chaîne ou lien" maxlength="200">
+              </div>
+              <div class="champ champ--reseau">
+                <label for="t-facebook">Facebook</label>
+                <input id="t-facebook" name="facebook" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Page ou profil" maxlength="200">
+              </div>
+              <div class="champ champ--reseau">
+                <label for="t-linkedin">LinkedIn</label>
+                <input id="t-linkedin" name="linkedin" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Lien du profil" maxlength="200">
+              </div>
+              <div class="champ champ--reseau">
+                <label for="t-autre_lien">Autre lien</label>
+                <input id="t-autre_lien" name="autre_lien" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Site, Spotify, SoundCloud…" maxlength="200">
+              </div>
+            </div>
+          </fieldset>
           <div class="champ">
             <label for="t-message">En quelques mots</label>
             <textarea id="t-message" name="message" rows="4" required maxlength="2000"></textarea>
           </div>
           <label class="accord"><input type="checkbox" name="accord" value="oui" required> <span>J'accepte que Reims Talent utilise ces informations pour me recontacter. <a href="/confidentialite.html">En savoir plus</a></span></label>
-          <button class="bouton bouton--or bouton--plein" type="submit">Envoyer</button>
+          <button class="bouton bouton--or" type="submit">Envoyer</button>
           <p class="formulaire__etat" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
-    <!-- Événements -->
-    <section class="section section--creme" id="evenements" aria-labelledby="titre-evenements">
-      <div class="cadre evenements apparition">
-        <div>
-          <p class="surtitre surtitre--fonce">Événements</p>
-          <h2 id="titre-evenements" class="titre titre--fonce">Bientôt, les talents <em>en vrai</em></h2>
-          <p class="evenements__texte">Des soirées et des scènes pour voir les talents de Reims sur place, les rencontrer, les écouter. Les premières dates arrivent&nbsp;: inscrivez-vous pour être prévenu en premier.</p>
+    <!-- Questions -->
+    <section class="section" id="questions" aria-labelledby="titre-questions">
+      <div class="cadre deux-colonnes deux-colonnes--etroit">
+        <header class="apparition">
+          <p class="etiquette"><span>04</span> Questions</p>
+          <h2 id="titre-questions" class="titre">Avant de <em>se lancer</em></h2>
+          <p class="chapo">Une autre question&nbsp;? Écris-nous à <a href="mailto:contact@reimstalent.fr">contact@reimstalent.fr</a>.</p>
+        </header>
+        <div class="faq apparition">
+          <details>
+            <summary>Qui peut proposer un talent&nbsp;?</summary>
+            <p>Tout le monde. Tu peux proposer ton propre talent, ou celui de quelqu'un que tu admires&nbsp;: un ami, un voisin, un artisan, une coach.</p>
+          </details>
+          <details>
+            <summary>Faut-il un âge minimum&nbsp;?</summary>
+            <p>Non, il n'y a pas d'âge. Si la personne a moins de 18&nbsp;ans, on demande l'accord de ses deux parents avant tout tournage.</p>
+          </details>
+          <details>
+            <summary>Est-ce que le film sort sans mon accord&nbsp;?</summary>
+            <p>Jamais. Rien n'est publié sans ton accord.</p>
+          </details>
+          <details>
+            <summary>Où se passe le tournage&nbsp;?</summary>
+            <p>À Reims, dans un lieu qui te ressemble&nbsp;: un parc, une rue, devant la cathédrale, là où tu crées.</p>
+          </details>
+          <details>
+            <summary>Où le film est-il diffusé&nbsp;?</summary>
+            <p>Sur Instagram, TikTok, YouTube, Facebook et LinkedIn, sous-titré en français et en anglais.</p>
+          </details>
         </div>
-        <div class="evenements__carte">
-          <p class="evenements__date">À venir</p>
-          <p class="evenements__nom">Première soirée Reims Talent</p>
-          <p class="evenements__lieu">Reims · date et lieu annoncés bientôt</p>
-          <a class="bouton bouton--marine" href="#lettre">Être prévenu</a>
+      </div>
+    </section>
+
+    <!-- Événements -->
+    <section class="section section--filet" id="evenements" aria-labelledby="titre-evenements">
+      <div class="cadre">
+        <div class="evenement apparition">
+          <div>
+            <p class="etiquette"><span>05</span> Événements</p>
+            <h2 id="titre-evenements" class="titre">Bientôt, les talents <em>en vrai</em></h2>
+            <p class="chapo">Des soirées et des scènes pour voir les talents de Reims sur place, les rencontrer, les écouter.</p>
+          </div>
+          <div class="evenement__ligne">
+            <p class="evenement__date">À venir</p>
+            <p class="evenement__nom">Première soirée Reims Talent</p>
+            <p class="evenement__lieu">Reims · date et lieu annoncés bientôt</p>
+            <a class="lien" href="#lettre">Être prévenu en premier <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Partenaires -->
-    <section class="section section--nuit" id="partenaires" aria-labelledby="titre-partenaires">
+    <section class="section section--filet" id="partenaires" aria-labelledby="titre-partenaires">
       <div class="cadre">
-        <header class="section__tete apparition">
-          <p class="surtitre">Partenaires</p>
+        <header class="tete apparition">
+          <p class="etiquette"><span>06</span> Partenaires</p>
           <h2 id="titre-partenaires" class="titre">Soutenir les talents <em>de Reims</em></h2>
-          <p class="section__chapo">Entreprises, commerces, lieux, écoles, institutions&nbsp;: Reims Talent se construit avec celles et ceux qui font la ville.</p>
+          <p class="chapo">Entreprises, commerces, lieux, écoles, institutions&nbsp;: Reims Talent se construit avec celles et ceux qui font la ville.</p>
         </header>
-        <div class="soutiens">
-          <div class="soutien apparition">
-            <h3>Accueillir</h3>
-            <p>Un tournage, une soirée, une scène&nbsp;: ouvrez votre lieu aux talents rémois.</p>
-          </div>
-          <div class="soutien apparition">
-            <h3>Soutenir</h3>
-            <p>Aidez l'association à filmer plus de talents et à organiser ses premiers événements.</p>
-          </div>
-          <div class="soutien apparition">
-            <h3>Relayer</h3>
-            <p>Partagez les portraits, présentez-nous des talents, parlez de Reims Talent autour de vous.</p>
-          </div>
-        </div>
 
-        <form class="formulaire formulaire--large apparition" action="https://api.web3forms.com/submit" method="post" data-formulaire data-merci="Merci, votre message est bien arrivé. Nous vous répondons rapidement." novalidate>
-          <input type="hidden" name="formulaire" value="partenaire">
-          <input type="hidden" name="access_key" value="d7441ec3-bf69-49b4-a5d0-7c67635c8cf4">
-          <input type="hidden" name="subject" value="Nouveau message partenaire sur reimstalent.fr">
-          <input type="hidden" name="from_name" value="reimstalent.fr">
-          <div class="piege" aria-hidden="true"><label>Ne pas remplir <input type="text" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
-          <div class="grille-champs">
-            <div class="champ">
-              <label for="p-nom">Nom et prénom</label>
-              <input id="p-nom" name="nom" type="text" autocomplete="name" required maxlength="100">
+        <div class="deux-colonnes">
+          <ul class="soutiens apparition">
+            <li><h3>Accueillir</h3><p>Un tournage, une soirée, une scène&nbsp;: ouvrez votre lieu aux talents rémois.</p></li>
+            <li><h3>Soutenir</h3><p>Aidez l'association à filmer plus de talents et à organiser ses premiers événements.</p></li>
+            <li><h3>Relayer</h3><p>Partagez les portraits, présentez-nous des talents, parlez de Reims Talent autour de vous.</p></li>
+          </ul>
+
+          <form class="formulaire formulaire--clair apparition" action="https://api.web3forms.com/submit" method="post" data-formulaire data-merci="Merci, votre message est bien arrivé. Nous vous répondons rapidement." novalidate>
+            <input type="hidden" name="formulaire" value="partenaire">
+            <input type="hidden" name="access_key" value="d7441ec3-bf69-49b4-a5d0-7c67635c8cf4">
+            <input type="hidden" name="subject" value="Nouveau message partenaire sur reimstalent.fr">
+            <input type="hidden" name="from_name" value="reimstalent.fr">
+            <div class="piege" aria-hidden="true"><label>Ne pas remplir <input type="text" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+            <div class="grille-champs">
+              <div class="champ">
+                <label for="p-nom">Nom et prénom</label>
+                <input id="p-nom" name="nom" type="text" autocomplete="name" required maxlength="100">
+              </div>
+              <div class="champ">
+                <label for="p-structure">Structure</label>
+                <input id="p-structure" name="structure" type="text" autocomplete="organization" required maxlength="120">
+              </div>
+              <div class="champ">
+                <label for="p-email">E-mail</label>
+                <input id="p-email" name="email" type="email" autocomplete="email" required maxlength="120">
+              </div>
+              <div class="champ">
+                <label for="p-soutien">Vous souhaitez</label>
+                <select id="p-soutien" name="soutien">
+                  <option>Accueillir un tournage ou une soirée</option>
+                  <option>Soutenir l'association</option>
+                  <option>Relayer, présenter des talents</option>
+                  <option>Autre chose</option>
+                </select>
+              </div>
             </div>
+            <fieldset class="reseaux-champs">
+              <legend>Vos réseaux <span class="facultatif">facultatif</span></legend>
+              <div class="grille-champs grille-champs--reseaux">
+                <div class="champ champ--reseau">
+                  <label for="p-site">Site web</label>
+                  <input id="p-site" name="site" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="www…" maxlength="200">
+                </div>
+                <div class="champ champ--reseau">
+                  <label for="p-instagram">Instagram</label>
+                  <input id="p-instagram" name="instagram" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="@compte" maxlength="200">
+                </div>
+                <div class="champ champ--reseau">
+                  <label for="p-linkedin">LinkedIn</label>
+                  <input id="p-linkedin" name="linkedin" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Page ou profil" maxlength="200">
+                </div>
+                <div class="champ champ--reseau">
+                  <label for="p-facebook">Facebook</label>
+                  <input id="p-facebook" name="facebook" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Page" maxlength="200">
+                </div>
+                <div class="champ champ--reseau">
+                  <label for="p-tiktok">TikTok</label>
+                  <input id="p-tiktok" name="tiktok" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="@compte" maxlength="200">
+                </div>
+                <div class="champ champ--reseau">
+                  <label for="p-autre_lien">Autre lien</label>
+                  <input id="p-autre_lien" name="autre_lien" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Lien utile" maxlength="200">
+                </div>
+              </div>
+            </fieldset>
             <div class="champ">
-              <label for="p-structure">Structure</label>
-              <input id="p-structure" name="structure" type="text" autocomplete="organization" required maxlength="120">
+              <label for="p-message">Votre message</label>
+              <textarea id="p-message" name="message" rows="4" required maxlength="2000"></textarea>
             </div>
-            <div class="champ">
-              <label for="p-email">E-mail</label>
-              <input id="p-email" name="email" type="email" autocomplete="email" required maxlength="120">
-            </div>
-            <div class="champ">
-              <label for="p-soutien">Vous souhaitez</label>
-              <select id="p-soutien" name="soutien">
-                <option>Accueillir un tournage ou une soirée</option>
-                <option>Soutenir l'association</option>
-                <option>Relayer, présenter des talents</option>
-                <option>Autre chose</option>
-              </select>
-            </div>
-          </div>
-          <div class="champ">
-            <label for="p-message">Votre message</label>
-            <textarea id="p-message" name="message" rows="4" required maxlength="2000"></textarea>
-          </div>
-          <label class="accord"><input type="checkbox" name="accord" value="oui" required> <span>J'accepte que Reims Talent utilise ces informations pour me recontacter. <a href="/confidentialite.html">En savoir plus</a></span></label>
-          <button class="bouton bouton--or" type="submit">Nous écrire</button>
-          <p class="formulaire__etat" role="status" aria-live="polite"></p>
-        </form>
+            <label class="accord"><input type="checkbox" name="accord" value="oui" required> <span>J'accepte que Reims Talent utilise ces informations pour me recontacter. <a href="/confidentialite.html">En savoir plus</a></span></label>
+            <button class="bouton bouton--plein" type="submit">Nous écrire</button>
+            <p class="formulaire__etat" role="status" aria-live="polite"></p>
+          </form>
+        </div>
       </div>
     </section>
 
-    <!-- Lettre d'information -->
-    <section class="lettre" id="lettre" aria-labelledby="titre-lettre">
+    <!-- Lettre -->
+    <section class="section section--filet lettre" id="lettre" aria-labelledby="titre-lettre">
       <div class="cadre lettre__cadre apparition">
         <div>
-          <h2 id="titre-lettre" class="lettre__titre">La lettre <em>Reims Talent</em></h2>
-          <p>Les nouveaux portraits et les dates des soirées, dans votre boîte mail. Pas de publicité, désinscription à tout moment.</p>
+          <h2 id="titre-lettre" class="titre titre--petit">La lettre <em>Reims Talent</em></h2>
+          <p class="chapo">Les nouveaux portraits et les dates des soirées, dans votre boîte mail. Pas de publicité, désinscription à tout moment.</p>
         </div>
         <form class="lettre__form" action="https://api.web3forms.com/submit" method="post" data-formulaire data-merci="Merci, vous êtes inscrit à la lettre Reims Talent." novalidate>
           <input type="hidden" name="formulaire" value="lettre">
@@ -387,7 +486,7 @@
           <div class="lettre__ligne">
             <label class="visuellement-cache" for="l-email">Votre e-mail</label>
             <input id="l-email" name="email" type="email" autocomplete="email" placeholder="votre@email.fr" required maxlength="120">
-            <button class="bouton bouton--or" type="submit">S'inscrire</button>
+            <button class="bouton bouton--plein" type="submit">S'inscrire</button>
           </div>
           <label class="accord"><input type="checkbox" name="accord" value="oui" required> <span>J'accepte de recevoir la lettre de Reims Talent. <a href="/confidentialite.html">Données personnelles</a></span></label>
           <p class="formulaire__etat" role="status" aria-live="polite"></p>
@@ -399,20 +498,27 @@
   <footer class="pied">
     <div class="cadre pied__grille">
       <div class="pied__marque">
-        <img src="/assets/img/logo-clair.png" alt="Reims Talent" width="110" height="145" loading="lazy">
+        <img src="/assets/img/logo-clair.png" alt="Reims Talent" width="76" height="100" loading="lazy">
         <p>Le média qui révèle les talents de Reims et de sa région.</p>
       </div>
       <nav class="pied__liens" aria-label="Plan du site">
-        <a href="#talents">Les talents</a>
+        <p class="pied__titre">Le site</p>
+        <a href="#portraits">Portraits</a>
         <a href="#projet">Le projet</a>
-        <a href="#proposer">Proposer un talent</a>
+        <a href="#participer">Proposer un talent</a>
+        <a href="#questions">Questions</a>
         <a href="#evenements">Événements</a>
         <a href="#partenaires">Partenaires</a>
       </nav>
       <div class="pied__liens">
-        <a href="https://www.instagram.com/reims_talent/" target="_blank" rel="noopener">Instagram · @reims_talent</a>
-        <a href="https://www.tiktok.com/@reims.talent" target="_blank" rel="noopener">TikTok · @reims.talent</a>
-        <a href="https://www.linkedin.com/company/reims-talent/" target="_blank" rel="noopener">LinkedIn · Reims Talent</a>
+        <p class="pied__titre">Nous suivre</p>
+        <a href="https://www.instagram.com/reims_talent/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@reims.talent" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.youtube.com/@ReimsTalent" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.linkedin.com/company/reims-talent/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="pied__liens">
+        <p class="pied__titre">Nous écrire</p>
         <a href="mailto:contact@reimstalent.fr">contact@reimstalent.fr</a>
       </div>
     </div>
@@ -422,6 +528,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/site.js?v=3" defer></script>
 </body>
 </html>
