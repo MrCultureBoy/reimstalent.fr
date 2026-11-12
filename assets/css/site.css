@@ -62,14 +62,10 @@ em { font-style: italic; }
 .chapo { color: var(--encre-douce); max-width: 56ch; margin: 16px 0 0; }
 .chapo a { color: var(--encre); text-underline-offset: 3px; }
 .etiquette, .surtitre {
-  display: flex; align-items: center; gap: 10px;
-  margin: 0 0 18px;
-  font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--encre-pale);
+  margin: 0 0 16px;
+  font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--or-texte);
 }
-.etiquette span { color: var(--or-texte); font-variant-numeric: tabular-nums; }
-.etiquette span::after { content: ""; display: inline-block; width: 22px; height: 1px; background: currentColor; margin-left: 10px; vertical-align: middle; opacity: .6; }
-.etiquette--clair { color: rgba(232, 226, 213, .7); }
-.etiquette--clair span { color: var(--or); }
+.etiquette--clair { color: var(--or); }
 
 /* Boutons et liens */
 .bouton {
@@ -200,51 +196,80 @@ em { font-style: italic; }
 /* Participer */
 .etapes { margin: 36px 0 0; padding: 0; list-style: none; }
 .etapes li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; padding: 18px 0; border-top: 1px solid var(--filet-clair); }
-.etapes li > span { font-family: var(--serif); font-style: italic; color: var(--or); font-size: 17px; line-height: 1.4; }
+.etapes li > span { display: grid; place-content: center; width: 28px; height: 28px; margin-top: 1px; border: 1px solid rgba(201, 162, 39, .55); border-radius: 50%; color: var(--or); font-size: 12.5px; line-height: 1; font-variant-numeric: tabular-nums; }
 .etapes strong { font-weight: 400; font-family: var(--serif); font-size: 18px; }
 .etapes p { margin: 4px 0 0; color: rgba(232, 226, 213, .72); font-size: 14.5px; }
 .note { margin: 20px 0 0; font-size: 13px; color: rgba(232, 226, 213, .6); }
 
-/* Formulaires */
-.formulaire { display: grid; gap: 18px; }
-.grille-champs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
-.champ { display: grid; gap: 7px; }
-.champ label { font-size: 12.5px; letter-spacing: .02em; color: var(--encre-douce); }
-.facultatif { color: var(--encre-pale); font-size: 11.5px; margin-left: 4px; }
-.champ input, .champ textarea, .champ select, .lettre__ligne input {
-  width: 100%; min-height: 46px; padding: 11px 0;
-  border: 0; border-bottom: 1px solid var(--filet-fort); border-radius: 0;
-  background: transparent; color: inherit; font: 400 15px/1.5 var(--sans);
-  transition: border-color .2s;
+/* Formulaires : de vraies cases, lisibles et agréables à remplir */
+.formulaire {
+  --champ-fond: #FFFFFF; --champ-bord: rgba(17, 33, 58, .16); --champ-bord-survol: rgba(17, 33, 58, .3);
+  --champ-texte: var(--encre); --champ-libelle: var(--encre); --champ-aide: var(--encre-pale); --champ-indice: #8C929C;
+  display: grid; gap: 20px;
 }
-.champ textarea { resize: vertical; min-height: 96px; }
-.champ select { appearance: none; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2311213A' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 4px center; padding-right: 22px; cursor: pointer; }
-.champ input:focus, .champ textarea:focus, .champ select:focus, .lettre__ligne input:focus { outline: none; border-bottom-color: var(--or); }
-.champ input::placeholder, .champ textarea::placeholder, .lettre__ligne input::placeholder { color: var(--encre-pale); opacity: .7; }
-[aria-invalid="true"] { border-bottom-color: #B4442F !important; }
-.choix { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; }
+.section--marine .formulaire {
+  --champ-fond: rgba(232, 226, 213, .07); --champ-bord: rgba(232, 226, 213, .18); --champ-bord-survol: rgba(232, 226, 213, .34);
+  --champ-texte: #F5F1E8; --champ-libelle: rgba(245, 241, 232, .92); --champ-aide: rgba(232, 226, 213, .6); --champ-indice: rgba(232, 226, 213, .45);
+}
+.grille-champs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 16px; }
+.champ { display: grid; gap: 8px; }
+.champ label { font-size: 14px; color: var(--champ-libelle); }
+.facultatif { color: var(--champ-aide); font-size: 12.5px; margin-left: 6px; }
+.champ input, .champ textarea, .champ select, .lettre__ligne input {
+  width: 100%; min-height: 54px; padding: 15px 18px;
+  border: 1px solid var(--champ-bord); border-radius: 12px;
+  background: var(--champ-fond); color: var(--champ-texte);
+  font: 400 16px/1.45 var(--sans);
+  box-shadow: 0 1px 2px rgba(17, 33, 58, .04);
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.champ input:hover, .champ textarea:hover, .champ select:hover, .lettre__ligne input:hover { border-color: var(--champ-bord-survol); }
+.champ input:focus, .champ textarea:focus, .champ select:focus, .lettre__ligne input:focus {
+  outline: none; border-color: var(--or); box-shadow: 0 0 0 4px rgba(201, 162, 39, .2);
+}
+.section--marine .champ input:focus, .section--marine .champ textarea:focus { background: rgba(232, 226, 213, .1); }
+.champ textarea { resize: vertical; min-height: 132px; }
+.champ select { appearance: none; cursor: pointer; padding-right: 44px; background: var(--champ-fond) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2311213A' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 18px center; }
+.champ input::placeholder, .champ textarea::placeholder, .lettre__ligne input::placeholder { color: var(--champ-indice); opacity: 1; }
+[aria-invalid="true"] { border-color: #C0563F !important; box-shadow: 0 0 0 4px rgba(192, 86, 63, .14) !important; }
+.section--marine [aria-invalid="true"] { border-color: #F0A493 !important; }
+
+/* Le choix « mon talent / quelqu'un » */
+.choix { display: inline-flex; gap: 4px; margin: 0; padding: 4px; border: 1px solid var(--champ-bord); border-radius: 999px; background: var(--champ-fond); justify-self: start; }
 .choix label { cursor: pointer; }
 .choix input { position: absolute; opacity: 0; pointer-events: none; }
-.choix span { display: inline-flex; align-items: center; min-height: 38px; padding: 0 16px; border: 1px solid var(--filet-clair); border-radius: 999px; font-size: 13.5px; transition: background .2s, color .2s, border-color .2s; }
-.choix input:checked + span { background: var(--ivoire); color: var(--marine); border-color: var(--ivoire); }
+.choix span { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px; font-size: 14px; color: var(--champ-aide); transition: background .25s var(--ease), color .25s; }
+.choix input:checked + span { background: var(--or); color: var(--marine-profond); }
 .choix input:focus-visible + span { outline: 2px solid var(--or); outline-offset: 2px; }
-.accord { display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.55; color: var(--encre-douce); cursor: pointer; }
-.accord input { margin: 3px 0 0; accent-color: var(--or); flex: none; }
-.accord a { color: inherit; text-underline-offset: 2px; }
-.formulaire .bouton { justify-self: start; }
-.formulaire__etat { margin: 0; min-height: 1.5em; font-size: 13.5px; }
-.formulaire__etat.est-erreur { color: #B4442F; }
-.formulaire__etat.est-ok { color: var(--or-texte); }
-.est-envoye .champ, .est-envoye .grille-champs, .est-envoye .choix, .est-envoye .accord, .est-envoye .lettre__ligne, .est-envoye .bouton { display: none; }
 
-/* Formulaire sur fond marine */
-.section--marine .champ label, .section--marine .accord { color: rgba(232, 226, 213, .72); }
-.section--marine .champ input, .section--marine .champ textarea { border-bottom-color: rgba(232, 226, 213, .28); }
-.section--marine .champ input::placeholder, .section--marine .champ textarea::placeholder { color: rgba(232, 226, 213, .45); }
-.section--marine .facultatif { color: rgba(232, 226, 213, .5); }
+/* Réseaux : un champ par réseau, avec le préfixe dans la case */
+.reseaux-champs { margin: 0; padding: 18px; border: 1px solid var(--champ-bord); border-radius: 16px; min-width: 0; }
+.reseaux-champs legend { padding: 0 8px; margin-left: -8px; font-size: 14px; color: var(--champ-libelle); }
+.grille-champs--reseaux { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 14px; margin-top: 6px; }
+.champ--reseau { gap: 6px; }
+.champ--reseau label { font-size: 12.5px; color: var(--champ-aide); }
+.champ--reseau input { min-height: 48px; padding: 12px 14px; font-size: 15px; border-radius: 10px; }
+
+/* Case d'accord */
+.accord { display: flex; gap: 12px; align-items: flex-start; font-size: 13.5px; line-height: 1.55; color: var(--champ-aide, var(--encre-douce)); cursor: pointer; }
+.accord input {
+  appearance: none; flex: none; width: 22px; height: 22px; margin: 0; cursor: pointer;
+  border: 1px solid var(--champ-bord, var(--filet-fort)); border-radius: 7px; background: var(--champ-fond, #fff);
+  display: grid; place-content: center; transition: background .2s, border-color .2s;
+}
+.accord input::after { content: ""; width: 10px; height: 6px; border: 2px solid var(--marine-profond); border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px) scale(0); transition: transform .2s var(--ease); }
+.accord input:checked { background: var(--or); border-color: var(--or); }
+.accord input:checked::after { transform: rotate(-45deg) translate(1px, -1px) scale(1); }
+.accord input:focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }
+.accord a { color: inherit; text-underline-offset: 2px; }
+
+.formulaire .bouton { justify-self: start; min-height: 52px; padding: 0 30px; font-size: 15px; }
+.formulaire__etat { margin: 0; min-height: 1.5em; font-size: 14px; }
+.formulaire__etat.est-erreur { color: #C0563F; }
+.formulaire__etat.est-ok { color: var(--or-texte); }
 .section--marine .formulaire__etat.est-ok { color: var(--or); }
 .section--marine .formulaire__etat.est-erreur { color: #F0A493; }
-.section--marine [aria-invalid="true"] { border-bottom-color: #F0A493 !important; }
+.est-envoye .champ, .est-envoye .grille-champs, .est-envoye .choix, .est-envoye .accord, .est-envoye .lettre__ligne, .est-envoye .bouton, .est-envoye .reseaux-champs { display: none; }
 
 /* Questions */
 .faq { border-top: 1px solid var(--filet-fort); }
@@ -276,7 +301,9 @@ em { font-style: italic; }
 /* Lettre */
 .lettre__cadre { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
 .lettre__form { display: grid; gap: 14px; }
-.lettre__ligne { display: flex; gap: 14px; align-items: flex-end; }
+.lettre__ligne { display: flex; gap: 10px; align-items: stretch; }
+.lettre__form { --champ-fond: #FFFFFF; --champ-bord: rgba(17, 33, 58, .16); --champ-bord-survol: rgba(17, 33, 58, .3); --champ-texte: var(--encre); --champ-aide: var(--encre-pale); --champ-indice: #8C929C; }
+.lettre__ligne .bouton { min-height: 54px; padding: 0 26px; }
 .lettre__ligne input { flex: 1; }
 
 /* Pied de page */
@@ -342,6 +369,12 @@ em { font-style: italic; }
   .carte { flex: 0 0 78%; scroll-snap-align: start; }
   .js .portraits .apparition { opacity: 1; transform: none; }
   .grille-champs { grid-template-columns: minmax(0, 1fr); }
+  .grille-champs--reseaux { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 10px; }
+  .reseaux-champs { padding: 14px 12px; }
+  .champ--reseau input { font-size: 16px; padding: 11px 12px; }
+  .choix { justify-self: stretch; display: flex; }
+  .choix label { flex: 1; }
+  .choix span { justify-content: center; width: 100%; padding: 0 8px; font-size: 13.5px; white-space: nowrap; }
   .lettre__ligne { flex-direction: column; align-items: stretch; }
   .pied__grille { grid-template-columns: minmax(0, 1fr); gap: 28px; }
 }
@@ -351,18 +384,6 @@ em { font-style: italic; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .js .apparition { opacity: 1; transform: none; }
 }
-
-/* Réseaux sociaux dans les formulaires : un champ par réseau */
-.reseaux-champs { margin: 4px 0 0; padding: 0; border: 0; min-width: 0; }
-.reseaux-champs legend { padding: 0; margin-bottom: 4px; font-size: 12.5px; color: var(--encre-douce); }
-.section--marine .reseaux-champs legend { color: rgba(232, 226, 213, .72); }
-.grille-champs--reseaux { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 18px; }
-.champ--reseau { gap: 0; }
-.champ--reseau label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--encre-pale); padding-top: 10px; }
-.section--marine .champ--reseau label { color: rgba(232, 226, 213, .5); }
-.champ--reseau input { min-height: 40px; padding: 8px 0; font-size: 14.5px; }
-@media (max-width: 980px) { .grille-champs--reseaux { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 820px) { .grille-champs--reseaux { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* Son de l'accueil : coupé par défaut, monte en douceur au clic */
 .son { display: inline-flex; align-items: center; gap: 10px; padding: 0; border: 0; background: none; color: var(--encre-douce); font: 400 12.5px/1.4 var(--sans); cursor: pointer; transition: color .2s; }
